@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SymbiOrder</string>
+    <string name="MainActivity_Title">Order From</string>
 </resources>
