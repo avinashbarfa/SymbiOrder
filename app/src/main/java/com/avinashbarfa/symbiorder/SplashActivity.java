@@ -1,10 +1,9 @@
+package com.avinashbarfa.symbiorder;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-
-import com.avinashbarfa.symbiorder.MainActivity;
-import com.avinashbarfa.symbiorder.R;
 
 /**
  * Created by Avinash Barfa on 9/9/2018.
@@ -29,7 +28,7 @@ public class SplashActivity extends AppCompatActivity{
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                Intent intent = new Intent(SplashActivity.this,  MainActivity.class);
                 startActivity(intent);
 
                 // close this activity

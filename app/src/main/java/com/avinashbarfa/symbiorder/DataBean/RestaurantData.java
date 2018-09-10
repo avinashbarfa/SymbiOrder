@@ -9,7 +9,8 @@ public class RestaurantData {
     private int restaurantID;
     private String restaurantName;
 
-    public RestaurantData(String restaurantName) {
+    public RestaurantData(int restaurantID, String restaurantName) {
+        this.restaurantID = restaurantID;
         this.restaurantName = restaurantName;
     }
 

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "107495868759",
+    "firebase_url": "https://symbiorder.firebaseio.com",
+    "project_id": "symbiorder",
+    "storage_bucket": "symbiorder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107495868759:android:cc1b95445c72170e",
+        "android_client_info": {
+          "package_name": "com.avinashbarfa.symbiorder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107495868759-l7hurro5cbpa6ipuup995gjbkv5d2aob.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.avinashbarfa.symbiorder",
+            "certificate_hash": "75d117e23ac8c5a6cd106701d528389730e60d95"
+          }
+        },
+        {
+          "client_id": "107495868759-t9ruv7vl793cc21achaujscgalb53cfs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBksD1o-YWmwIcU-laQTuk5zZCGxUdCYmw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107495868759-t9ruv7vl793cc21achaujscgalb53cfs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

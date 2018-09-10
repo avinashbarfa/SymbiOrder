@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.avinashbarfa.symbiorder.DataBean.RestaurantData;
 import com.avinashbarfa.symbiorder.R;
@@ -18,7 +19,7 @@ import java.util.List;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.ViewHolder>{
 
-    private List<RestaurantData>   restaurantDataList;
+    private List<RestaurantData> restaurantDataList;
     private Context context;
 
     public RestaurantAdapter(List<RestaurantData> restaurantList, Context context) {
@@ -35,10 +36,10 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
     @Override
     public void onBindViewHolder(RestaurantAdapter.ViewHolder holder, int position) {
         RestaurantData restaurantData = restaurantDataList.get(position);
-
         holder.txtRestaurantName.setText(restaurantData.getRestaurantName());
-      //  holder.txtProductPrice.setText(restaurantData.getRestaurantID());
-    }
+
+
+     }
 
     @Override
     public int getItemCount() {
@@ -50,9 +51,8 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
 
         public ViewHolder(View itemView) {
             super(itemView);
-
             txtRestaurantName = (TextView)itemView.findViewById(R.id.restaurant_name);
-
         }
     }
+
 }
