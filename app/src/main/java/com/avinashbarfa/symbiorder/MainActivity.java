@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading Restaurants...");
         progressDialog.show();
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://192.168.0.102/SymbiOrder_Backend/retrieve-restaurants.php" , new Response.Listener<String>() {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://192.168.0.101/SymbiOrder_Backend/retrieve-restaurants.php" , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 progressDialog.dismiss();
@@ -136,10 +136,5 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    public void callOrder(View view){
-        Intent intent = new Intent(MainActivity.this, OrderActivity.class);
-        startActivity(intent);
     }
 }

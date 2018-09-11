@@ -14,8 +14,7 @@
             android:id="@+id/categoryLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:onClick="callOrder">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/restaurant_name"

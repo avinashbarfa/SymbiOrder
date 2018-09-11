@@ -3,6 +3,7 @@ package com.avinashbarfa.symbiorder;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -31,13 +32,15 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
         addBtn = findViewById(R.id.add_btn);
         itemsList = findViewById(R.id.items_list);
 
-        Intent intent = getIntent();
+
+        String message = getIntent().getStringExtra("restaurant_id");
+        //String message = bundle.getString("restaurant_id");
+        Log.v("Message", message);
         addBtn.setOnClickListener(this);
 
         ArrayList<String> items = new ArrayList<>();
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1 ,items);
         itemsList.setAdapter(adapter);
-        Toast.makeText(this, intent.getStringExtra("restaurant_id"), Toast.LENGTH_SHORT).show();
     }
 
     @Override
