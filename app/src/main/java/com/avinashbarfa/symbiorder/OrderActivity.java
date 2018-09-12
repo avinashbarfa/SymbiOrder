@@ -32,7 +32,6 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
 
 
         String message = getIntent().getStringExtra("restaurant_id");
-        //String message = bundle.getString("restaurant_id");
         Log.v("Message", message);
         addBtn.setOnClickListener(this);
 

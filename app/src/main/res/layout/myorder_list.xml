@@ -11,13 +11,13 @@
         android:layout_margin="4dp">
 
         <LinearLayout
-            android:id="@+id/order_layout"
+            android:id="@+id/categoryLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/restaurant_name"
+                android:id="@+id/orderid"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 android:layout_margin="8dp"
@@ -27,5 +27,4 @@
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
-
 </LinearLayout>
