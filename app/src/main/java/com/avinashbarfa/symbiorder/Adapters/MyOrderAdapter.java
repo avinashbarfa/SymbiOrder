@@ -1,7 +1,6 @@
 package com.avinashbarfa.symbiorder.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,12 +8,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.avinashbarfa.symbiorder.DataBean.OrdersData;
 import com.avinashbarfa.symbiorder.DataBean.UrlLink;
-import com.avinashbarfa.symbiorder.MyOrdersClickListener;
-import com.avinashbarfa.symbiorder.OrderDetailActivity;
 import com.avinashbarfa.symbiorder.R;
 import com.squareup.picasso.Picasso;
 
@@ -54,15 +50,6 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
         }
 
         Picasso.with(context).load(urlLink.getServerIP()+ordersData.getRestaurantImageURL()).into(holder.restaurantImageView);
-        holder.setMyOrdersClickListener(new MyOrdersClickListener() {
-                        @Override
-            public void onClick(View view, int position) {
-                Toast.makeText(context, String.valueOf(ordersData.getOrderID()),Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(context, OrderDetailActivity.class);
-                intent.putExtra("order_id" , String.valueOf(ordersData.getOrderID()));
-                context.startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -75,7 +62,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
 
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView txtrestaurantName;
         public TextView txtItems;
@@ -83,7 +70,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
         public TextView txttotalamount;
         public TextView txtstatus;
         public ImageView restaurantImageView;
-        private MyOrdersClickListener myOrdersClickListener;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -93,17 +80,6 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
             txtorderedon = (TextView) itemView.findViewById(R.id.txtorderedon);
             txttotalamount = (TextView) itemView.findViewById(R.id.txttotalamount);
             txtstatus = (TextView) itemView.findViewById(R.id.txtstatus);
-            itemView.setOnClickListener(this);
         }
-
-        public void setMyOrdersClickListener(MyOrdersClickListener myOrdersClickListener){
-            this.myOrdersClickListener = myOrdersClickListener;
-        }
-
-        @Override
-        public void onClick(View v) {
-            myOrdersClickListener.onClick(v,getAdapterPosition());
-        }
-
     }
 }
