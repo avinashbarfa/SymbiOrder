@@ -8,17 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.avinashbarfa.symbiorder.DataBean.RestaurantData;
-import com.avinashbarfa.symbiorder.MainActivity;
+import com.avinashbarfa.symbiorder.DataBean.UrlLink;
 import com.avinashbarfa.symbiorder.OrderActivity;
 import com.avinashbarfa.symbiorder.R;
 import com.avinashbarfa.symbiorder.RestaurantClickListener;
+import com.squareup.picasso.Picasso;
 
-
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -29,7 +31,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
 
     private List<RestaurantData> restaurantDataList;
     private Context context;
-
+    UrlLink urlLink = new UrlLink();
     public RestaurantAdapter(List<RestaurantData> restaurantList, Context context) {
         this.restaurantDataList  = restaurantList;
         this.context = context;
@@ -45,6 +47,8 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
     public void onBindViewHolder(RestaurantAdapter.ViewHolder holder, int position) {
         final RestaurantData restaurantData = restaurantDataList.get(position);
         holder.txtRestaurantName.setText(restaurantData.getRestaurantName());
+        Log.v("Path : ", urlLink.getServerIP()+restaurantData.getRestaurantImageURL());
+        Picasso.with(context).load(urlLink.getServerIP()+restaurantData.getRestaurantImageURL()).into(holder.restaurantImage);
         holder.setRestaurantClickListener(new RestaurantClickListener() {
             @Override
             public void onClick(View view, int position) {
@@ -70,11 +74,13 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView txtRestaurantName;
+        public ImageView restaurantImage;
         private RestaurantClickListener restaurantClickListener;
 
         public ViewHolder(View itemView) {
             super(itemView);
             txtRestaurantName = (TextView) itemView.findViewById(R.id.restaurant_name);
+            restaurantImage = (ImageView) itemView.findViewById(R.id.restaurant_image);
             itemView.setOnClickListener(this);
         }
 

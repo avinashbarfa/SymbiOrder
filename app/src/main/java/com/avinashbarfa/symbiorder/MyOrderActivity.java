@@ -15,6 +15,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.avinashbarfa.symbiorder.Adapters.MyOrderAdapter;
 import com.avinashbarfa.symbiorder.DataBean.OrdersData;
+import com.avinashbarfa.symbiorder.DataBean.UrlLink;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,10 +31,12 @@ public class MyOrderActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private List<OrdersData> ordersDataList;
+    UrlLink urlLink = new UrlLink();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_order);
+
 
         recyclerView = (RecyclerView) findViewById(R.id.myorder_recyclerview);
         recyclerView.setHasFixedSize(true);
@@ -47,7 +50,7 @@ public class MyOrderActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
         progressDialog.show();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://192.168.0.105/SymbiOrder_Backend/retrieve-myorders.php" , new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlLink.getRetriveMyOrdersURL() , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 progressDialog.dismiss();

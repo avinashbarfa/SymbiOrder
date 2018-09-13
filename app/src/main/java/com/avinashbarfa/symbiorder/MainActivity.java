@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.avinashbarfa.symbiorder.Adapters.RestaurantAdapter;
 import com.avinashbarfa.symbiorder.DataBean.RestaurantData;
+import com.avinashbarfa.symbiorder.DataBean.UrlLink;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private List<RestaurantData> restaurantDataList;
+    UrlLink urlLink = new UrlLink();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +61,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
         restaurantDataList = new ArrayList<>();
         loadRestaurantList();
 
@@ -68,7 +70,8 @@ public class MainActivity extends AppCompatActivity
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading Restaurants...");
         progressDialog.show();
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://192.168.0.105/SymbiOrder_Backend/retrieve-restaurants.php" , new Response.Listener<String>() {
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, urlLink.getRetriveRestaurantURL() , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 progressDialog.dismiss();
@@ -80,7 +83,8 @@ public class MainActivity extends AppCompatActivity
                         JSONObject object = array.getJSONObject(i);
                         RestaurantData list = new RestaurantData (
                                 object.getInt("restaurant_id"),
-                                object.getString("name"));
+                                object.getString("name"),
+                                object.getString("image_url"));
                         restaurantDataList.add(list);
 
                     }
