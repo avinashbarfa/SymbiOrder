@@ -61,7 +61,12 @@ public class MyOrderActivity extends AppCompatActivity {
                     for(int i =0; i<array.length();i++){
                         JSONObject object = array.getJSONObject(i);
                         OrdersData list = new OrdersData (
-                                object.getInt("order_id"));
+                                object.getString("name"),
+                                object.getString("image_url"),
+                                object.getString("items"),
+                                object.getString("timestamp"),
+                                object.getInt("amount"),
+                                object.getInt("status"));
                         ordersDataList.add(list);
 
                     }

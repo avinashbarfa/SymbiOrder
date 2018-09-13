@@ -7,14 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.avinashbarfa.symbiorder.DataBean.OrdersData;
+import com.avinashbarfa.symbiorder.DataBean.UrlLink;
 import com.avinashbarfa.symbiorder.MyOrdersClickListener;
-import com.avinashbarfa.symbiorder.OrderActivity;
 import com.avinashbarfa.symbiorder.OrderDetailActivity;
 import com.avinashbarfa.symbiorder.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
 
     private List<OrdersData> ordersDataList;
     private Context context;
-
+    UrlLink urlLink = new UrlLink();
     public MyOrderAdapter(List<OrdersData> ordersDataList, Context context) {
         this.ordersDataList = ordersDataList;
         this.context = context;
@@ -40,7 +42,18 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
     @Override
     public void onBindViewHolder(MyOrderAdapter.ViewHolder holder, int position) {
         final OrdersData ordersData = ordersDataList.get(position);
-        holder.orderID.setText(String.valueOf(ordersData.getOrderID()));
+        holder.txtrestaurantName.setText(ordersData.getRestaurantName());
+        holder.txtItems.setText(ordersData.getItemsOrdered());
+        holder.txtorderedon.setText(String.valueOf(ordersData.getOrderTimeStamp()));
+
+        holder.txttotalamount.setText(String.valueOf(ordersData.getTotalAmount()));
+        if("1".equals(String.valueOf(ordersData.getStatus()))){
+            holder.txtstatus.setText("Delivered");
+        } else{
+            holder.txtstatus.setText("Will be Delivered Soon");
+        }
+
+        Picasso.with(context).load(urlLink.getServerIP()+ordersData.getRestaurantImageURL()).into(holder.restaurantImageView);
         holder.setMyOrdersClickListener(new MyOrdersClickListener() {
                         @Override
             public void onClick(View view, int position) {
@@ -64,12 +77,22 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        public TextView orderID;
+        public TextView txtrestaurantName;
+        public TextView txtItems;
+        public TextView txtorderedon;
+        public TextView txttotalamount;
+        public TextView txtstatus;
+        public ImageView restaurantImageView;
         private MyOrdersClickListener myOrdersClickListener;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            orderID = (TextView) itemView.findViewById(R.id.orderid);
+            restaurantImageView = (ImageView) itemView.findViewById(R.id.image_restaurant);
+            txtrestaurantName = (TextView) itemView.findViewById(R.id.txtrestaurantName);
+            txtItems = (TextView) itemView.findViewById(R.id.txtItems);
+            txtorderedon = (TextView) itemView.findViewById(R.id.txtorderedon);
+            txttotalamount = (TextView) itemView.findViewById(R.id.txttotalamount);
+            txtstatus = (TextView) itemView.findViewById(R.id.txtstatus);
             itemView.setOnClickListener(this);
         }
 
