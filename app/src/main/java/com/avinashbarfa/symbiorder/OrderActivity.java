@@ -1,60 +1,89 @@
 package com.avinashbarfa.symbiorder;
 
+import android.media.MediaCas;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.avinashbarfa.symbiorder.Adapters.RestaurantAdapter;
+import com.avinashbarfa.symbiorder.DataBean.RestaurantData;
+import com.avinashbarfa.symbiorder.DataBean.UrlLink;
 
-public class OrderActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-    private EditText addItem;
-    private Button addBtn;
-    private ListView itemsList;
+import java.util.HashMap;
+import java.util.Map;
 
-    private ArrayList<String> items;
-    private ArrayAdapter<String> adapter;
+public class OrderActivity extends AppCompatActivity{
+
+    EditText items_list;
+    EditText edit_username;
+    EditText edit_contact;
+    EditText edit_address;
+    EditText btn_place_order;
+    UrlLink urlLink = new UrlLink();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
 
-        addItem = findViewById(R.id.add_item);
-        addBtn = findViewById(R.id.add_btn);
-        itemsList = findViewById(R.id.items_list);
-
+        items_list = (EditText) findViewById(R.id.items_list);
+        edit_username = (EditText) findViewById(R.id.edit_username);
+        edit_contact = (EditText) findViewById(R.id.edit_address);
 
         String message = getIntent().getStringExtra("restaurant_id");
         Log.v("Message", message);
-        addBtn.setOnClickListener(this);
 
-        ArrayList<String> items = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1 ,items);
-        itemsList.setAdapter(adapter);
-    }
+        String itemList = items_list.getText().toString();
+        String address = edit_address.getText().toString();
+        String personName = edit_username.getText().toString();
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        items.remove(position);
-        adapter.notifyDataSetChanged();
-        Toast.makeText(this, "Delete", Toast.LENGTH_SHORT).show();
-    }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.add_btn:
-                String itemEntered = addItem.getText().toString();
-                adapter.add(itemEntered);
-                addItem.setText("");
-                break;
-        }
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlLink.getRetriveRestaurantURL() , new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray array = jsonObject.getJSONArray("result");
+
+                    for(int i =0; i<array.length();i++){
+                        JSONObject object = array.getJSONObject(i);
+
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage() , Toast.LENGTH_LONG).show();
+                    }
+                }
+        )
+        {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                //params.put("category_id" , category_id);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 }
