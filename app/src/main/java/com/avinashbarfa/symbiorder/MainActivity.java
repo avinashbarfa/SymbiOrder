@@ -133,7 +133,9 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_orders) {
             startActivity(new Intent(MainActivity.this,MyOrderActivity.class));
-        } else if (id == R.id.nav_logout) {
+        }else if (id == R.id.nav_share) {
+            startActivity(new Intent(MainActivity.this,AboutUs.class));
+        }else if (id == R.id.nav_logout) {
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

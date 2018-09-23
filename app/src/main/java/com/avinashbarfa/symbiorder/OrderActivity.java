@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class OrderActivity extends AppCompatActivity{
 
-    EditText items_list;
+    EditText edt_items_list;
     EditText edit_username;
     EditText edit_contact;
     EditText edit_address;
@@ -35,13 +35,14 @@ public class OrderActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
 
-        items_list = (EditText) findViewById(R.id.items_list);
+        edt_items_list = (EditText) findViewById(R.id.items_list);
         edit_username = (EditText) findViewById(R.id.edit_username);
         edit_contact = (EditText) findViewById(R.id.edit_address);
+        edit_address = (EditText) findViewById(R.id.edit_address);
 
         restaurantID = getIntent().getStringExtra("restaurant_id");
         contactNumber = edit_contact.getText().toString();
-        itemList = items_list.getText().toString();
+        itemList = edt_items_list.getText().toString();
         address = edit_address.getText().toString();
         personName = edit_username.getText().toString();
         btn_place_order = (Button) findViewById(R.id.btn_place_order);
@@ -54,7 +55,10 @@ public class OrderActivity extends AppCompatActivity{
     }
 
     public void placeOrder() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlLink.getRetriveRestaurantURL() , new Response.Listener<String>() {
+        Log.v("data : ", restaurantID+" "+contactNumber+" "+itemList+" "+address+" "+personName);
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlLink.getPlaceOrderURL() , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(getApplicationContext(), response , Toast.LENGTH_LONG).show();

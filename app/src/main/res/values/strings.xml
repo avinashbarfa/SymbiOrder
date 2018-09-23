@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">SymbiOrder</string>
     <string name="MainActivity_Title">Order From</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Select Restaurant</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_activity_about_us">About Us</string>
+    <string name="title_activity_feed_back">FeedBack</string>
 </resources>
