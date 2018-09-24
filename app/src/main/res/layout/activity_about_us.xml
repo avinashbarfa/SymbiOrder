@@ -33,7 +33,7 @@
                         android:layout_height="154dp"
                         android:layout_margin="36dp"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/splash_screen_img" />
+                        app:srcCompat="@drawable/about_us_img" />
                 </LinearLayout>
 
                 <Button
