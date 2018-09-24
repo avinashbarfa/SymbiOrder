@@ -56,19 +56,24 @@
                     android:id="@+id/txt_contact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="12dp"
                     android:text="CONTACT NUMBER" />
 
-                <EditText
-                    android:id="@+id/edit_contact"
+                <TextView
+                    android:id="@+id/txtview_contact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:layout_marginBottom="8dp"
+                    android:text="TextView"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/txt_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="12dp"
                     android:text="ADDRESS" />
 
                 <EditText
@@ -89,6 +94,12 @@
                     android:id="@+id/btn_place_order"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="36dp"
+                    android:layout_marginRight="36dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#110B43"
+                    android:textColor="@android:color/background_light"
                     android:text="PLACE ORDER" />
             </LinearLayout>
         </LinearLayout>

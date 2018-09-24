@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -26,9 +27,10 @@ public class OrderActivity extends AppCompatActivity{
     EditText edit_username;
     EditText edit_contact;
     EditText edit_address;
+    TextView txtview_contact;
     Button btn_place_order;
     UrlLink urlLink = new UrlLink();
-    String itemList,address,personName,contactNumber,restaurantID;
+    String itemList,address,personName,contactNumber = "9179686919",restaurantID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +39,12 @@ public class OrderActivity extends AppCompatActivity{
 
         edt_items_list = (EditText) findViewById(R.id.items_list);
         edit_username = (EditText) findViewById(R.id.edit_username);
-        edit_contact = (EditText) findViewById(R.id.edit_address);
         edit_address = (EditText) findViewById(R.id.edit_address);
+        txtview_contact = (TextView) findViewById(R.id.txtview_contact);
 
         restaurantID = getIntent().getStringExtra("restaurant_id");
-        contactNumber = edit_contact.getText().toString();
-        itemList = edt_items_list.getText().toString();
-        address = edit_address.getText().toString();
-        personName = edit_username.getText().toString();
+        txtview_contact.setText(contactNumber);
+
         btn_place_order = (Button) findViewById(R.id.btn_place_order);
         btn_place_order.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +55,9 @@ public class OrderActivity extends AppCompatActivity{
     }
 
     public void placeOrder() {
+        itemList = edt_items_list.getText().toString();
+        address = edit_address.getText().toString();
+        personName = edit_username.getText().toString();
         Log.v("data : ", restaurantID+" "+contactNumber+" "+itemList+" "+address+" "+personName);
 
 

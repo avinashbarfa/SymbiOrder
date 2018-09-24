@@ -30,15 +30,16 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".OrderActivity"
-            android:label="Order Items"/>
+            android:label="Order Items" />
         <activity
             android:name=".MyOrderActivity"
             android:label="My Orders"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".AboutUs"
             android:label="@string/title_activity_about_us"
             android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>
