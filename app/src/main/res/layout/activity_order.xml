@@ -8,6 +8,24 @@
     android:orientation="vertical">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_restName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:text="Restaurant Name"
+            android:textAlignment="center"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp"
+            android:textStyle="normal|bold|italic" />
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -29,7 +47,9 @@
                     android:id="@+id/txtEnterItems"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ENTER ITEMS" />
+                    android:text="ENTER ITEMS"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textStyle="italic" />
 
                 <EditText
                     android:id="@+id/items_list"
@@ -42,7 +62,9 @@
                     android:id="@+id/txt_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="NAME" />
+                    android:text="NAME"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textStyle="italic" />
 
 
                 <EditText
@@ -58,7 +80,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="12dp"
-                    android:text="CONTACT NUMBER" />
+                    android:text="CONTACT NUMBER"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textStyle="italic" />
 
                 <TextView
                     android:id="@+id/txtview_contact"
@@ -74,7 +98,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="12dp"
-                    android:text="ADDRESS" />
+                    android:text="ADDRESS"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textStyle="italic" />
 
                 <EditText
                     android:id="@+id/edit_address"
@@ -99,8 +125,8 @@
                     android:layout_marginRight="36dp"
                     android:layout_marginTop="16dp"
                     android:background="#110B43"
-                    android:textColor="@android:color/background_light"
-                    android:text="PLACE ORDER" />
+                    android:text="PLACE ORDER"
+                    android:textColor="@android:color/background_light" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

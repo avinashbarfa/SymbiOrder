@@ -47,15 +47,14 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
     public void onBindViewHolder(RestaurantAdapter.ViewHolder holder, int position) {
         final RestaurantData restaurantData = restaurantDataList.get(position);
         holder.txtRestaurantName.setText(restaurantData.getRestaurantName());
-        Log.v("Path : ", urlLink.getServerIP()+restaurantData.getRestaurantImageURL());
         Picasso.with(context).load(urlLink.getServerIP()+restaurantData.getRestaurantImageURL()).into(holder.restaurantImage);
         holder.setRestaurantClickListener(new RestaurantClickListener() {
             @Override
             public void onClick(View view, int position) {
-                    Toast.makeText(context, String.valueOf(restaurantData.getRestaurantID()),Toast.LENGTH_SHORT).show();
                     System.out.print("ID status :"+restaurantData.getRestaurantID());
                     Intent intent = new Intent(context, OrderActivity.class);
                     intent.putExtra("restaurant_id" , String.valueOf(restaurantData.getRestaurantID()));
+                    intent.putExtra("restaurant_name", restaurantData.getRestaurantName());
                     context.startActivity(intent);
             }
         });
@@ -79,8 +78,8 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
 
         public ViewHolder(View itemView) {
             super(itemView);
-            txtRestaurantName = (TextView) itemView.findViewById(R.id.restaurant_name);
-            restaurantImage = (ImageView) itemView.findViewById(R.id.restaurant_image);
+            txtRestaurantName = itemView.findViewById(R.id.restaurant_name);
+            restaurantImage = itemView.findViewById(R.id.restaurant_image);
             itemView.setOnClickListener(this);
         }
 

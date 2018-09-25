@@ -64,22 +64,17 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView txtrestaurantName;
-        public TextView txtItems;
-        public TextView txtorderedon;
-        public TextView txttotalamount;
-        public TextView txtstatus;
+        public TextView txtrestaurantName,txtItems, txtorderedon, txttotalamount,txtstatus;
         public ImageView restaurantImageView;
-
 
         public ViewHolder(View itemView) {
             super(itemView);
-            restaurantImageView = (ImageView) itemView.findViewById(R.id.image_restaurant);
-            txtrestaurantName = (TextView) itemView.findViewById(R.id.txtrestaurantName);
-            txtItems = (TextView) itemView.findViewById(R.id.txtItems);
-            txtorderedon = (TextView) itemView.findViewById(R.id.txtorderedon);
-            txttotalamount = (TextView) itemView.findViewById(R.id.txttotalamount);
-            txtstatus = (TextView) itemView.findViewById(R.id.txtstatus);
+            restaurantImageView = itemView.findViewById(R.id.image_restaurant);
+            txtrestaurantName = itemView.findViewById(R.id.txtrestaurantName);
+            txtItems = itemView.findViewById(R.id.txtItems);
+            txtorderedon = itemView.findViewById(R.id.txtorderedon);
+            txttotalamount = itemView.findViewById(R.id.txttotalamount);
+            txtstatus = itemView.findViewById(R.id.txtstatus);
         }
     }
 }

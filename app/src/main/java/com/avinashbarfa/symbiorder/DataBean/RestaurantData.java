@@ -20,16 +20,8 @@ public class RestaurantData {
         return restaurantID;
     }
 
-    public void setRestaurantID(int restaurantID) {
-        this.restaurantID = restaurantID;
-    }
-
     public String getRestaurantName() {
         return restaurantName;
-    }
-
-    public void setRestaurantName(String restaurantName) {
-        this.restaurantName = restaurantName;
     }
 
 
@@ -37,7 +29,4 @@ public class RestaurantData {
         return restaurantImageURL;
     }
 
-    public void setRestaurantImageURL(String restaurantImageURL) {
-        this.restaurantImageURL = restaurantImageURL;
-    }
 }

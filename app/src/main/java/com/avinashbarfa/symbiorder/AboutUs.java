@@ -2,10 +2,8 @@ package com.avinashbarfa.symbiorder;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -16,14 +14,27 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        btnContact = (Button)findViewById(R.id.btnContact);
-        btnShare = (Button)findViewById(R.id.btnShare);
+        //get back home button
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        
+        btnContact = findViewById(R.id.btnContact);
+        btnShare = findViewById(R.id.btnShare);
 
         btnContact.setOnClickListener(this);
         btnShare.setOnClickListener(this);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if(id == android.R.id.home){
+            //ends up the activity
+            this.finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -54,5 +65,6 @@ public class AboutUs extends AppCompatActivity implements View.OnClickListener{
             }
         }
     }
+
 
 }

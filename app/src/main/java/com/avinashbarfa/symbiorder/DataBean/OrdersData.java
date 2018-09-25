@@ -25,13 +25,6 @@ public class OrdersData {
         this.itemsOrdered = itemsOrdered;
     }
 
-    public int getOrderID() {
-        return orderID;
-    }
-
-    public int getRestaurantID() {
-        return restaurantID;
-    }
 
     public String getRestaurantName() {
         return restaurantName;
