@@ -20,7 +20,7 @@ import java.util.List;
  * Created by Avinash Barfa on 9/12/2018.
  */
 
-public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHolder> implements AdapterView.OnItemClickListener{
+public class    MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHolder> implements AdapterView.OnItemClickListener{
 
     private List<OrdersData> ordersDataList;
     private Context context;
@@ -43,12 +43,15 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.ViewHold
         holder.txtorderedon.setText(String.valueOf(ordersData.getOrderTimeStamp()));
 
         holder.txttotalamount.setText(String.valueOf(ordersData.getTotalAmount()));
-        if("1".equals(String.valueOf(ordersData.getStatus()))){
-            holder.txtstatus.setText("Delivered");
-        } else{
-            holder.txtstatus.setText("Will be Delivered Soon");
+        if ("0".equals(String.valueOf(ordersData.getStatus()))) {
+            holder.txtstatus.setText("Order Received");
+        } else if("1".equals(String.valueOf(ordersData.getStatus()))){
+            holder.txtstatus.setText("Preparing Order");
+        } else if("2".equals(String.valueOf(ordersData.getStatus()))){
+            holder.txtstatus.setText("On the Way");
+        } else if("3".equals(String.valueOf(ordersData.getStatus()))) {
+            holder.txtstatus.setText("On the Way");
         }
-
         Picasso.with(context).load(urlLink.getServerIP()+ordersData.getRestaurantImageURL()).into(holder.restaurantImageView);
     }
 

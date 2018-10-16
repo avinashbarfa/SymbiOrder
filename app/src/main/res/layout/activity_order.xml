@@ -84,12 +84,13 @@
                     android:textColor="@android:color/holo_orange_dark"
                     android:textStyle="italic" />
 
-                <TextView
-                    android:id="@+id/txtview_contact"
+                <EditText
+                    android:id="@+id/edt_contact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="TextView"
+                    android:inputType="number"
+                    android:hint="Mobile Number"
                     android:textSize="16sp" />
 
                 <TextView

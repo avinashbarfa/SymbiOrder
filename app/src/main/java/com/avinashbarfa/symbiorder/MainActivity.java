@@ -12,6 +12,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -40,7 +42,8 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView.Adapter adapter;
     private List<RestaurantData> restaurantDataList;
     UrlLink urlLink = new UrlLink();
-
+    String contactNumber;
+    TextView txtNavMobile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +60,15 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        Toast.makeText(getApplicationContext(), "Hello brfa", Toast.LENGTH_LONG).show();
+        contactNumber = getIntent().getStringExtra("contactNumber");
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View headView  = navigationView.getHeaderView(0);
+        txtNavMobile = headView.findViewById(R.id.txtNavMobile);
+        txtNavMobile.setText(contactNumber);
         restaurantDataList = new ArrayList<>();
         loadRestaurantList();
 
@@ -130,11 +139,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_orders) {
-            startActivity(new Intent(MainActivity.this,MyOrderActivity.class));
+            Intent intent = new Intent(MainActivity.this,MyOrderActivity.class);
+            intent.putExtra("contactNumber", contactNumber);
+            startActivity(intent);
         }else if (id == R.id.nav_share) {
             startActivity(new Intent(MainActivity.this,AboutUs.class));
         }else if (id == R.id.nav_logout) {
-
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

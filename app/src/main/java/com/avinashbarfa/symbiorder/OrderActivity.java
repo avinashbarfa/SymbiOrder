@@ -23,11 +23,11 @@ import java.util.Map;
 
 public class OrderActivity extends AppCompatActivity{
 
-    EditText edt_items_list, edit_username , edit_address;
-    TextView txtview_contact,txt_restName;
+    EditText edt_items_list, edit_username , edit_address ,edt_contact;
+    TextView txt_restName;
     Button btn_place_order;
     UrlLink urlLink = new UrlLink();
-    String itemList,address,personName,contactNumber = "9179686919",restaurantID,restaurantName;
+    String itemList,address,personName,contactNumber,restaurantID,restaurantName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +41,11 @@ public class OrderActivity extends AppCompatActivity{
         edt_items_list = findViewById(R.id.items_list);
         edit_username = findViewById(R.id.edit_username);
         edit_address = findViewById(R.id.edit_address);
-        txtview_contact = findViewById(R.id.txtview_contact);
         txt_restName = findViewById(R.id.txt_restName);
+        edt_contact = findViewById(R.id.edt_contact);
         restaurantID = getIntent().getStringExtra("restaurant_id");
         restaurantName =  getIntent().getStringExtra("restaurant_name");
-        txtview_contact.setText(contactNumber);
+
         txt_restName.setText(restaurantName);
 
         btn_place_order = findViewById(R.id.btn_place_order);
@@ -72,12 +72,15 @@ public class OrderActivity extends AppCompatActivity{
         itemList = edt_items_list.getText().toString();
         address = edit_address.getText().toString();
         personName = edit_username.getText().toString();
+        contactNumber = edt_contact.getText().toString();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlLink.getPlaceOrderURL() , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Toast.makeText(getApplicationContext(), response+" from "+restaurantName , Toast.LENGTH_LONG).show();
-                startActivity(new Intent(OrderActivity.this, MyOrderActivity.class));
+                Intent intent = new Intent(OrderActivity.this, MyOrderActivity.class);
+                intent.putExtra("contactNumber" , contactNumber);
+                startActivity(intent);
                 finish();
             }
         }, new Response.ErrorListener() {

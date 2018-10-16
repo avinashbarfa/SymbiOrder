@@ -1,11 +1,14 @@
 package com.avinashbarfa.symbiorder;
 
 import android.app.ProgressDialog;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -33,7 +36,8 @@ public class MyOrderActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private List<OrdersData> ordersDataList;
     UrlLink urlLink = new UrlLink();
-    String contactNumber = "9179686919";
+    String contactNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +50,8 @@ public class MyOrderActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.myorder_recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        contactNumber = getIntent().getStringExtra("contactNumber");
 
         ordersDataList = new ArrayList<>();
         loadMyOrderList();

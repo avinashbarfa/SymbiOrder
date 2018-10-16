@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
     tools:context="com.avinashbarfa.symbiorder.LoginActivity">
 
     <LinearLayout
@@ -18,13 +20,28 @@
             android:layout_margin="40dp"
             app:srcCompat="@drawable/splash_screen_img" />
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/googleBtn"
+        <EditText
+            android:id="@+id/edt_mobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp" />
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:ems="10"
+            android:hint="Mobile Number"
+            android:inputType="phone"
+            android:textColor="@color/colorAccent" />
+
+        <Button
+            android:id="@+id/btnMobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:onClick="fill"
+            android:text="GO" />
+
 
     </LinearLayout>
 
 
-</LinearLayout>
+</ScrollView>
